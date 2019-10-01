@@ -15,21 +15,98 @@
 .section1 nav {
   font-size: 20px;
   background-color: #fff;
-  opacity: .7;
   padding: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.section1 nav ul {
-  min-width: 650px;
+.section1 nav .hamburger {
+  padding: 10px;
+  display: inline-block;
+  border: 0;
+  margin: 0;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-.section1 nav li {
+.section1 nav .hamburger, .section1 nav .navigation {
+  transition: transform .5s .1s ease-in;
+}
+
+.section1 nav .hamburger-box {
+  width: 40px;
+  height: 30px;
+  display: inline-block;
+  position: relative;
+}
+
+.section1 nav .hamburger-inner {
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color .1s .2s ease-in-out;
+}
+
+.section1 nav .hamburger-inner::before,
+.section1 nav .hamburger-inner::after {
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  position: absolute;
+  content: '';
+  left: 0;
+  transition: transform .2s .2s ease-in-out;
+}
+
+.section1 nav .hamburger-inner::before {
+  top: 15px;
+}
+
+.section1 nav .hamburger-inner::after {
+  top: -15px;
+}
+
+.section1 nav .hamburger--active .hamburger-inner {
+  background-color: transparent;
+}
+
+.section1 nav .hamburger--active .hamburger-inner:before {
+  transform: translateY(15px), rotate(45deg);
+}
+
+.section1 nav .hamburger--active .hamburger-inner:after {
+  transform: translateY(-15px), rotate(-45deg);
+}
+
+.section1 nav .navigation {
+  height: 200px;
+  width: 100vw;
+  background-color: #fff;
+  color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-300px);
+}
+
+.section1 nav .navigation--active {
+  transform: translateY(100px);
+  color: black;
+}
+
+.section1 nav .navigation-item {
+  margin-top: 10px;
+  margin-left: 20px;
   list-style: none;
-  display: inline;
-  padding: 10px;
+}
+
+.section1 nav .navigation-item strong {
+  padding: 20px;
 }
 
 .section1 nav #logo {
@@ -37,6 +114,8 @@
   font-family: 'Libre Baskerville', serif;
   display: inline;
   opacity: 1;
+  z-index: 2;
+  position: relative;
 }
 
 .section1 nav #logo p {
